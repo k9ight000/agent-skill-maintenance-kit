@@ -17,7 +17,7 @@ Discover the active roots from the current agent runtime. Common examples are:
 
 Exclude bundled system and plugin-cache Skills unless the user explicitly asks to audit them. Audit project-local roots separately and label them.
 
-Use `scripts/audit_skills.py` for read-only inventory and mechanical evidence. It does not edit Skills, create a cache, install dependencies, access the network, or decide which Skills to retire.
+Use `scripts/audit_skills.py` for read-only inventory and mechanical evidence. It separates unguarded risk signals from guarded prohibitions and container-specific command context. It does not edit Skills, create a cache, install dependencies, access the network, or decide which Skills to retire.
 
 ## Workflow
 
@@ -30,11 +30,13 @@ Use `scripts/audit_skills.py` for read-only inventory and mechanical evidence. I
    ```
 
 4. Use `--format json` when another tool consumes the result. Use repeatable `--root label=path` arguments for custom roots.
-5. Read every `SKILL.md` selected for a verdict completely. Read only directly relevant scripts and references.
+5. Read every `SKILL.md` selected for a verdict completely. For Retire or Merge, also read the proposed covering alternative or merge target completely. Read only directly relevant scripts and references.
 6. Judge each Skill holistically using the dimensions below.
 7. Forward-test substantial trigger or workflow changes with independent read-only agents only when delegation is authorized.
 8. Validate changed Skills with the official validator provided by the current runtime in UTF-8 mode.
 9. Present retirement and merge candidates with impact analysis. Never delete, move, retire, or merge without explicit confirmation.
+
+For substantial prompt, trigger, or workflow rewrites, compare the preserved baseline and candidate on the same representative tasks. Keep test agents blind to the intended verdict; when several agents are used, assign non-overlapping paths and a fixed output schema. Require correctness and safety first, then compare instruction adherence and, when available, tokens, latency, and cost. Skip A/B for metadata-only or mechanical fixes.
 
 ## Judgment Dimensions
 
@@ -59,7 +61,7 @@ Treat line count, duplicate names, stale tool tokens, risky command strings, or 
 | Retire | Little unique value remains, or risk and maintenance cost exceed the benefit |
 | Merge into X | Another Skill owns the same job; name the exact material to preserve in X |
 
-Every reason must name the evidence, explain the impact, identify the covering alternative for retirement, and propose the smallest useful change.
+Every verdict must name concrete evidence and its user-visible or operational impact. For Retire, name the covering alternative; for Merge, name the exact target and transferable material; for Improve or Update, propose the smallest useful change.
 
 ## Validation
 

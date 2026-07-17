@@ -11,7 +11,7 @@
 | `skill-stocktake` | 清点、审计和改进本地 Skill 库 | 只读扫描；不会自动修改、安装、删除或联网 |
 | `github-publisher` | 安全地创建、提交和推送 GitHub 仓库 | 推送前检查认证、远端、默认分支和隐私文件；公开仓库必须明确确认 |
 
-这些 Skill 以 `SKILL.md` 为核心，适用于 Codex 以及其他能读取 Agent Skill 指令的工具。设计重点是触发边界、授权、上下文成本、可移植性和可验证性，而不是绑定某个单一模型版本。`skill-stocktake` 需要 Python 3.9+ 和 PyYAML 6.x；`github-publisher` 还需要 Git 与 GitHub CLI (`gh`)。
+这些 Skill 以 `SKILL.md` 为核心，适用于 Codex 以及其他能读取 Agent Skill 指令的工具。设计重点是触发边界、授权、上下文成本、可移植性和可验证性，而不是绑定某个单一模型版本。对于实质性的 prompt、trigger 或 workflow 改写，`skill-stocktake` 建议用同一组代表性任务比较基线与候选版本：先要求正确性和安全通过，再在可用时比较指令遵循、token、延迟与成本。`skill-stocktake` 需要 Python 3.9+ 和 PyYAML 6.x；`github-publisher` 还需要 Git 与 GitHub CLI (`gh`)。
 
 ### 快速开始
 
@@ -86,7 +86,7 @@ A compact toolkit for maintaining and safely publishing Agent Skills for modern 
 | `skill-stocktake` | Inventory, audit, and improve a local Skill library | Read-only scanning; no automatic edits, installs, deletion, or network access |
 | `github-publisher` | Create, commit, and push GitHub repositories safely | Checks auth, remotes, default branches, and private files; public visibility requires explicit confirmation |
 
-The repository uses `SKILL.md` as its portable core. It is intended for Codex and other agents that can consume Agent Skill instructions. The design focuses on trigger fit, authorization, context cost, portability, and verification rather than claiming compatibility with only one model version. `skill-stocktake` requires Python 3.9+ and PyYAML 6.x; `github-publisher` also requires Git and the GitHub CLI (`gh`).
+The repository uses `SKILL.md` as its portable core. It is intended for Codex and other agents that can consume Agent Skill instructions. The design focuses on trigger fit, authorization, context cost, portability, and verification rather than claiming compatibility with only one model version. For substantial prompt, trigger, or workflow rewrites, `skill-stocktake` recommends comparing the baseline and candidate on the same representative tasks: require correctness and safety first, then compare instruction adherence and, when available, tokens, latency, and cost. `skill-stocktake` requires Python 3.9+ and PyYAML 6.x; `github-publisher` also requires Git and the GitHub CLI (`gh`).
 
 ### Quick Start
 

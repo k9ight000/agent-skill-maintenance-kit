@@ -18,7 +18,7 @@ try:
 except ImportError as exc:
     raise SystemExit(
         "PyYAML is required because the official skill validator also uses it. "
-        "Install nothing automatically; use the configured Codex Python runtime."
+        "Install nothing automatically; use the current runtime's configured Python environment."
     ) from exc
 
 
